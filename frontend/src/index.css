@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Regular'; /* Use a name to reference this font */
+  src: url('./fonts/JetBrainsMono-Regular.woff2') format('woff2'); /* Modern browsers */
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Bold'; /* Use a name to reference this font */
+  src: url('./fonts/JetBrainsMono-Bold.woff2') format('woff2'); /* Modern browsers */
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+}
