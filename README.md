@@ -1,1 +1,0 @@
-![Demo Video](./demos/animedemo1.mov)
