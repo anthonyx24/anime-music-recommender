@@ -1,1 +1,1 @@
-[![Demo Video](./demos/animedemo1.mov)]
+![Demo Video](./demos/animedemo1.mov)
