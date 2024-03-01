@@ -24,3 +24,7 @@ app.add_middleware(
 @app.get("/recommendations/{song_id}", tags=["recommendations"])
 async def get_recommendations(song_id: int, num_recs: int) -> dict:
     return services.get_recommendations(song_id, num_recs)
+
+@app.get("/search", tags=["search"])
+async def search(query: str) -> dict:
+    return services.search(query)

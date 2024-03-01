@@ -8,12 +8,6 @@ export function HomeScreen() {
     
     const navigate = useNavigate();
 
-    const navigateToSearch = () => {
-        navigate('/search');
-    }
-
-    // const visible = { opacity: 1, y: 0, transition: { delay: 1, duration: 1 } };
-
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: { 
@@ -21,7 +15,7 @@ export function HomeScreen() {
             transition: { 
                 delay: 0.5,
                 when: "beforeChildren",
-                staggerChildren: 1, // Stagger the animation of child components
+                staggerChildren: 0.5,
             }
         },
     };
@@ -37,7 +31,7 @@ export function HomeScreen() {
     return(
         <motion.div 
             className={styles.main_container} 
-            onClick={navigateToSearch}
+            onClick={() => navigate('/search')}
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0, transition: { duration: 1 }}}
