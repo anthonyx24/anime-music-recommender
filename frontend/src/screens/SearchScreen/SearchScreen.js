@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { get_results } from "../../services/SearchService";
 import { Fade } from "react-awesome-reveal";
 
+import { Header } from "../../components/Header/Header";
 import { SongCard } from "../../components/SongCard/SongCard";
 import { Carousel } from "../../components/Carousel/Carousel";
 
@@ -43,15 +44,7 @@ export function SearchScreen() {
             exit={{ opacity: 0, transition: { duration: 1 }}}
             variants={containerVariants}
         >
-            <div className={styles.header_container}>
-                <div className={styles.title} onClick={() => navigate('/')}>
-                    ANI<span style={{color: "#FEC7F9"}}>MELODI</span>
-                </div>
-                <div className={styles.learn_more} onClick={() => navigate('/about')}>
-                    learn more
-                </div>
-                
-            </div>
+            <Header />
             <input 
                     type="text"
                     value={searchInput}
@@ -61,8 +54,8 @@ export function SearchScreen() {
             />
             <div className={styles.search_results}>
                 {searchResults.map((result) => (
-                <Fade cascade duration={500}>
-                    <SongCard key={result.id} song={result}/>
+                <Fade key={result.id} cascade duration={500}>
+                    <SongCard song={result}/>
                 </Fade>
                 ))}
             </div>

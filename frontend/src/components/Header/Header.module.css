@@ -1,0 +1,23 @@
+.header_container {
+    position: absolute;
+    top: 7%;
+    width: 92vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    color: #FFF;
+    font-family: "JetBrains Mono Bold";
+    font-size: 35px;
+    letter-spacing: 9px;
+}
+
+.learn_more {
+    color: #FFF;
+    font-family: "JetBrains Mono Regular";
+    font-size: 15px;
+    letter-spacing: 2.8px;
+}

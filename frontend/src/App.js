@@ -6,6 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 import { HomeScreen } from './screens/HomeScreen/HomeScreen';
 import { SearchScreen } from './screens/SearchScreen/SearchScreen';
 import { AboutScreen } from './screens/AboutScreen/AboutScreen';
+import { RecsScreen } from './screens/RecsScreen/RecsScreen';
 
 function App() {
 
@@ -21,6 +22,10 @@ function App() {
     {
       path: '/about',
       element: <AboutScreen />
+    },
+    {
+      path: '/recommendations',
+      element: <RecsScreen /> 
     }
   ])
 
