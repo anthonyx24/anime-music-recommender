@@ -1,15 +1,16 @@
 .card_container {
     display: flex;
     flex-shrink: 0;
-    height: 48vh;
-    width: 33vw;
+    height: 400px;
+    width: 500px;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
     /* justify-content: space-between; */
-    /* background-color: rgba(217, 217, 217, 0.20); */
-    background-color: #FFF;
+    background-color: rgba(217, 217, 217, 0.20);
+    /* background-color: #FFF; */
     border-radius: 20px;
+    padding: 25px;
+    gap: 18px;
 }
 
 .anime_name {
@@ -20,5 +21,30 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(30vw - 20px);
+    max-width: 500px;
+}
+
+.anime_container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.anime_image {
+    height: 230px;
+    width: 160px;
+    border-radius: 10px;
+}
+
+.anime_info {
+    display: flex;
+    height: 230px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-family: "JetBrains Mono Regular";
+    color: #FFF;
+    font-size: 15px;
+    letter-spacing: 1.2px;
 }

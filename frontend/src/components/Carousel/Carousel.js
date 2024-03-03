@@ -5,64 +5,44 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow'
-import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
+import { Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 
 import { InfoCard } from '../InfoCard/InfoCard';
 
 import styles from './Carousel.module.css';
 
-export function Carousel() {
+export function Carousel( { songs } ) {
   return (
-    <>
+    
       <Swiper
         className={styles.main_container}
         direction={'vertical'}
-        effect={ 'coverflow' }
         grabCursor={true}
+        mousewheel={true}
+        keyboard={{ enabled: true} }
         centeredSlides={true}
-        loop={true}
-        slidesPerView={'auto'}
+        loop={false}
+        slidesPerView={1}
+        spaceBetween={30}
         coverflowEffect={
           {
             rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2.5,
+            stretch: 70,
           }
         }
-        pagination={{el:'', clickable: true}}
-        modules={[Navigation, Pagination, EffectCoverflow]}
+        pagination={{ dynamicBullets: true }}
+        modules={[Pagination, Mousewheel, Keyboard]}
       >
-        <SwiperSlide>
-          <InfoCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <InfoCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <InfoCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <InfoCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <InfoCard />
-        </SwiperSlide>
+        {songs.map((song) => (
+          <SwiperSlide key={song.id}>
+            <InfoCard song={song} />
+          </SwiperSlide>
+        ))}
 
-        {/* <div className="slider-controller">
-          <div className="swiper-button-prev slider-arrow">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-          </div>
-          <div className="swiper-button-next slider-arrow">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-          <div className="swiper-pagination"></div>
-        </div> */}
+        {/* <div className="swiper-pagination-bullet"></div> */}
 
       </Swiper>
-    </>
   );
 }

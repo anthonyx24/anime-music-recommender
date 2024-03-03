@@ -1,9 +1,35 @@
-.test_card {
-    width: 400px;
-    height: 100px;
-    background-color: #FFF;
+.main_container {
+    position: relative;
+    height: 450px;
+    width: calc(550px + 30px);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.main_container {
-    height: 60vh;
+/* :root {
+    --swiper-theme-color: #fff;
+} */
+
+/* :global(.swiper-pagination-bullet) {
+    width: 12px;
+    height: 12px; 
+    background: rgb(255, 255, 255, 0.2); 
+    opacity: 1; 
+}
+  
+:global(.swiper-pagination-bullet-active) {
+    background: #fff;
+} */
+
+:global(.swiper-pagination-bullet) {
+    width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px));
+    height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px));
+    border-radius: var(--swiper-pagination-bullet-border-radius, 50%);
+    background: #fff;
+    opacity: 0.5;
+}
+
+:global(.swiper-pagination-bullet-active) {
+    opacity: 1;
 }
