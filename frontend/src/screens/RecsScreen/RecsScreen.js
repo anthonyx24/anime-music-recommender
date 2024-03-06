@@ -20,7 +20,7 @@ export function RecsScreen() {
             setRecs(data);
         }
 
-        fetchRecs(current.id - 1);
+        fetchRecs(current.id - 1); // - 1 to account for index difference between SQL and data
     }, []);
 
     return (
@@ -28,8 +28,8 @@ export function RecsScreen() {
             <Header />
             <div className={styles.content_container}>
                 <InfoCard song={current} />
-                <InfoCard song={current} />
-                {/* <Carousel songs={recs}/> */}
+                {/* <InfoCard song={current} /> */}
+                <Carousel songs={recs}/>
             </div>
         </div>
     )

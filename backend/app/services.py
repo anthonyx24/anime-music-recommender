@@ -7,17 +7,22 @@ from sqlalchemy.orm import Session
 from app.models import Anime, Song
 from app.schemas import AnimeBase, SongBase
 
-filenames = np.load('./app/data/filenames_small.npy')
-similarity = np.load('./app/data/similarity_small.npy')
+filenames = np.load('./app/data/filenames.npy')
+similarity = np.load('./app/data/similarity.npy')
 
 DATABASE_URI = 'postgresql+psycopg2://postgres@localhost/anime-music'
 engine = create_engine(DATABASE_URI)
 Session = sessionmaker(bind=engine)
 
 def get_recommendations(song_id: int, num_recs: int) -> dict:
-    recommended_song_ids = similarity[song_id][:num_recs]
-    recommended_songs = filenames[recommended_song_ids]
-    return {"song_id": song_id, "recommended_songs": recommended_songs.tolist()}
+    recommended_song_ids = similarity[song_id][:num_recs].tolist()
+    print(recommended_song_ids)
+    session = Session()
+    recommended_songs = session.query(Song).join(Anime).filter(Song.id.in_(recommended_song_ids)).all()
+    recommended_songs_list = [SongBase.from_orm(song) for song in recommended_songs]
+    session.close()
+    return {"recommended_songs": recommended_songs_list}
+
 
 def search(query: str) -> dict:
     session = Session()
