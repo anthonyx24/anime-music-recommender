@@ -13,6 +13,13 @@
     width: 40vw;
 }
 
+.recs_container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
 .search_input {
     width: 40vw;
     background-color: transparent; 
@@ -43,6 +50,19 @@
     gap: 20px;
     max-height: 45vh;
     overflow-y: scroll;
+}
+
+.back_button {
+    color: white;
+    font-size: 16px;
+    font-family: "JetBrains Mono Regular";
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    letter-spacing: 2.3px;
+    cursor: pointer;
+    padding-bottom: 16px;
 }
 
 /* .search_fade {

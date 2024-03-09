@@ -3,6 +3,8 @@ import { useRoutes, useLocation } from 'react-router-dom';
 import * as React from 'react';
 import { AnimatePresence } from 'framer-motion';
 
+import { SongProvider } from './contexts/SongContext';
+
 import { HomeScreen } from './screens/HomeScreen/HomeScreen';
 import { SearchScreen } from './screens/SearchScreen/SearchScreen';
 import { AboutScreen } from './screens/AboutScreen/AboutScreen';
@@ -34,11 +36,13 @@ function App() {
   if(!element) return null;
 
   return (
-    <div className="App-background">
-      <AnimatePresence mode="wait">
-        {React.cloneElement(element, { key: location.pathname })}
-      </AnimatePresence>
-    </div>
+    <SongProvider>
+      <div className="App-background">
+        <AnimatePresence mode="wait">
+          {React.cloneElement(element, { key: location.pathname })}
+        </AnimatePresence>
+      </div>
+    </SongProvider>
   );
 }
 

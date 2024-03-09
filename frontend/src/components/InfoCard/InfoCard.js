@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './InfoCard.module.css';
 
+import { AudioCard } from '../AudioCard/AudioCard';
+
 export function InfoCard({ song }) {
 
     const convertDate = (date) => {
@@ -22,6 +24,7 @@ export function InfoCard({ song }) {
                     <div><span style={{ fontWeight: 700}}>Studios:</span> {song.anime.studios}</div>
                 </div>
             </div>
+            <AudioCard song={song} />
         </div>
     )
 }

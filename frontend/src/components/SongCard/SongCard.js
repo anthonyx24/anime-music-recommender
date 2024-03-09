@@ -1,17 +1,10 @@
 import React from 'react';
 import styles from './SongCard.module.css';
-import { useNavigate } from 'react-router-dom';
 
-export function SongCard({ song }) {
-
-    const navigate = useNavigate();
-
-    const navigateToRecs = () => {
-        navigate('/recommendations', { state: { current: song } });
-    }
+export function SongCard({ song, onClick }) {
 
     return (
-        <div className={styles.card_container} onClick={navigateToRecs}>
+        <div className={styles.card_container} onClick={onClick}>
             <img loading="lazy" src={song.anime.image_url} alt={song.name} className={styles.song_image} />
             <div className={styles.song_info}>
                 <div className={styles.song_name}>{song.name}</div>

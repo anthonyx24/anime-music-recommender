@@ -34,7 +34,7 @@ export function HomeScreen() {
             onClick={() => navigate('/search')}
             initial="hidden"
             animate="visible"
-            exit={{ opacity: 0, transition: { duration: 1 }}}
+            exit={{ opacity: 0, transition: { duration: 0.5 }}}
             variants={containerVariants}
         >
             <motion.div className={styles.title_container}>
