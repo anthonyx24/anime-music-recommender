@@ -14,9 +14,9 @@ export function AudioCard({ song }) {
         audioRef.current.currentTime = progressRef.current.value;
     }
 
-    // const onLoadedMetadata = () => {
-    //     progressRef.current.max = audioRef.current.duration;
-    // }
+    const onLoadedMetadata = () => {
+        progressRef.current.max = audioRef.current.duration;
+    }
 
     const repeat = useCallback(() => {
         progressRef.current.value = audioRef.current.currentTime;
@@ -29,21 +29,36 @@ export function AudioCard({ song }) {
     }, [audioRef, progressRef])
 
     useEffect(() => {
+        const audio = audioRef.current;
+        audio.addEventListener('ended', () => {
+            setIsPlaying(false);
+        });
+
+        animationRef.current = requestAnimationFrame(repeat);
         if(isPlaying) {
             audioRef.current.play();
-            animationRef.current = requestAnimationFrame(repeat);
         } else {
             audioRef.current.pause();
+            // cancelAnimationFrame(animationRef.current);
+        }
+        // animationRef.current = requestAnimationFrame(repeat);
+
+        return () => {
+            audio.removeEventListener('ended', () => {
+                setIsPlaying(false);
+            });
             cancelAnimationFrame(animationRef.current);
         }
-    }, [isPlaying]);
+    }, [isPlaying, audioRef, repeat]);
 
     return (
         <div className={styles.card_container}>
             <div className={styles.song_info}>
                 <div className={styles.song_subinfo}>
                     <div className={styles.song_name}>{song.name}</div>
-                    <div className={styles.song_artist}>{song.artist}</div>
+                    <div className={styles.song_artist}>
+                        { song.artist === "" ? "Unknown Artist" : song.artist }
+                    </div>
                 </div>
                 <div className={styles.song_type}>{song.type}</div>
                 
@@ -55,12 +70,15 @@ export function AudioCard({ song }) {
                 <div className={styles.progress_bar}>
                     <input ref={progressRef} type="range" defaultValue={0} onChange={handleProgress}/>
                 </div>
+
+                <audio 
+                    ref={audioRef} 
+                    src={`https://storage.googleapis.com/anime-audio/${song.filename}`}
+                    onLoadedMetadata={onLoadedMetadata}
+                />
             </div>
             
-            <audio 
-                ref={audioRef} 
-                src={`https://storage.googleapis.com/anime-audio/${song.filename}`}
-            />
+            
         </div>
     )
 }

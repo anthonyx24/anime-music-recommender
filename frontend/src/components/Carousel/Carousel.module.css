@@ -1,10 +1,11 @@
 .main_container {
     position: relative;
-    height: 450px;
+    height: 500px;
     width: calc(550px + 30px);
     display: flex;
     align-items: center;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 /* :root {

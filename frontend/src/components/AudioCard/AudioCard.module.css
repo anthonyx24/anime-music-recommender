@@ -1,11 +1,13 @@
 .card_container {
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 100%;
     box-sizing: border-box;
     border-radius: 15px;
     background-color: rgb(0, 0, 0, 0.2);
     padding: 20px;
+    gap: 10px;
 }
 
 .song_info {
@@ -20,6 +22,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    gap: 5px;
 }
 
 .song_name {
@@ -30,7 +33,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 500px;
+    max-width: 400px;
 }
 
 .song_artist {
@@ -38,6 +41,10 @@
     font-family: "JetBrains Mono Regular";
     font-size: 15px;
     letter-spacing: 1.2px;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .song_type {
@@ -52,6 +59,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    gap: 10px;
 }
 
 .progress_bar {
@@ -59,14 +67,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: flex-grow;
-    margin-top: 10px;
+    width: 87%;
 }
 
 .play_button {
     color: white;
-    height: 40px;
-    width: 40px;
 }
 
 input[type="range"] {
@@ -77,14 +82,8 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-runnable-track {
     height: 3px;
-    background: #FFF;
     border-radius: 5px;
-}
-
-input[type="range"]::-webkit-slider-runnable-track::before {
-    height: 3px;
-    background: rgb(255, 255, 255, 0.5);
-    border-radius: 5px;
+    background: linear-gradient(to right, #FFFFFF 0%, #FFFFFF var(--range-progress), rgba(255, 255, 255, 0.5) var(--range-progress), rgba(255, 255, 255, 0.5) 100%);
 }
 
 /* margin-top = (track height in pixels / 2) - (thumb height in pixels /2) */
