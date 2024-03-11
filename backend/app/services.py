@@ -1,4 +1,5 @@
 import numpy as np
+import requests
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, joinedload
@@ -7,8 +8,16 @@ from sqlalchemy.orm import Session
 from app.models import Anime, Song
 from app.schemas import AnimeBase, SongBase
 
-filenames = np.load('./app/data/filenames.npy')
-similarity = np.load('./app/data/similarity.npy')
+def load_data(url): 
+    response = requests.get(url)
+    response.raise_for_status()
+    file_path = url.split('/')[-1]
+    with open(file_path, 'wb') as f:
+        f.write(response.content)
+    return np.load(file_path, allow_pickle=True)
+
+filenames = load_data('https://storage.googleapis.com/anime-recommendations/filenames.npy')
+similarity = load_data('https://storage.googleapis.com/anime-recommendations/similarity.npy')
 
 DATABASE_URI = 'postgresql+psycopg2://postgres@localhost/anime-music'
 engine = create_engine(DATABASE_URI)
