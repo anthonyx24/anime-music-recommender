@@ -10,7 +10,8 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",
-    "localhost:3000"
+    "localhost:3000",
+    "https://animelodi.onrender.com"
 ]
 
 app.add_middleware(
