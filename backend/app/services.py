@@ -19,7 +19,8 @@ def load_data(url):
 filenames = load_data('https://storage.googleapis.com/anime-recommendations/filenames.npy')
 similarity = load_data('https://storage.googleapis.com/anime-recommendations/similarity.npy')
 
-DATABASE_URI = 'postgresql+psycopg2://postgres@localhost/anime-music'
+# DATABASE_URI = 'postgresql+psycopg2://postgres@localhost/anime-music'
+DATABASE_URI = 'postgres://anime_music_db_user:DXO0PssRTBp25nlGcWWyHsWryfCa1oWU@dpg-cnnp4dn109ks73b8umpg-a/anime_music_db'
 engine = create_engine(DATABASE_URI)
 Session = sessionmaker(bind=engine)
 
