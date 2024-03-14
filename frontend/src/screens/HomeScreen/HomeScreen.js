@@ -1,9 +1,9 @@
-import React, { useState } from 'react'; 
-// import { useNavigate } from 'react-router-dom';
+import React from 'react'; 
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import styles from './HomeScreen.module.css';
-import { useNavigate } from 'react-router-dom';
+
 export function HomeScreen() {
     
     const navigate = useNavigate();

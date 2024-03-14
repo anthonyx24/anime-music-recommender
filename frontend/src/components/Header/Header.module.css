@@ -13,6 +13,7 @@
     font-family: "JetBrains Mono Bold";
     font-size: 35px;
     letter-spacing: 9px;
+    cursor: pointer;
 }
 
 .learn_more {
@@ -20,4 +21,5 @@
     font-family: "JetBrains Mono Regular";
     font-size: 15px;
     letter-spacing: 2.8px;
+    cursor: pointer;
 }

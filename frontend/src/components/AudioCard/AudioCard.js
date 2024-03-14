@@ -19,13 +19,15 @@ export function AudioCard({ song }) {
     }
 
     const repeat = useCallback(() => {
-        progressRef.current.value = audioRef.current.currentTime;
-        progressRef.current.style.setProperty(
-            '--range-progress',
-            `${(progressRef.current.value / audioRef.current.duration) * 100}%`
-          );
-        
-        animationRef.current = requestAnimationFrame(repeat);
+        if(audioRef.current && progressRef.current){
+            progressRef.current.value = audioRef.current.currentTime;
+            progressRef.current.style.setProperty(
+                '--range-progress',
+                `${(progressRef.current.value / audioRef.current.duration) * 100}%`
+            );
+            
+            animationRef.current = requestAnimationFrame(repeat);
+        }
     }, [audioRef, progressRef])
 
     useEffect(() => {
@@ -39,9 +41,7 @@ export function AudioCard({ song }) {
             audioRef.current.play();
         } else {
             audioRef.current.pause();
-            // cancelAnimationFrame(animationRef.current);
         }
-        // animationRef.current = requestAnimationFrame(repeat);
 
         return () => {
             audio.removeEventListener('ended', () => {
