@@ -1,5 +1,6 @@
 import numpy as np
 import requests
+import os
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, joinedload
@@ -20,7 +21,7 @@ filenames = load_data('https://storage.googleapis.com/anime-recommendations/file
 similarity = load_data('https://storage.googleapis.com/anime-recommendations/similarity.npy')
 
 # DATABASE_URI = 'postgresql+psycopg2://postgres@localhost/anime-music'
-DATABASE_URI = 'postgresql://anime_music_db_user:DXO0PssRTBp25nlGcWWyHsWryfCa1oWU@dpg-cnnp4dn109ks73b8umpg-a/anime_music_db'
+DATABASE_URI = os.environ.get('DATABASE_URI')
 engine = create_engine(DATABASE_URI)
 Session = sessionmaker(bind=engine)
 
@@ -32,7 +33,6 @@ def get_recommendations(song_id: int, num_recs: int) -> dict:
     recommended_songs_list = [SongBase.from_orm(song) for song in recommended_songs]
     session.close()
     return {"recommended_songs": recommended_songs_list}
-
 
 def search(query: str) -> dict:
     session = Session()
