@@ -2,7 +2,7 @@
 
 [Check it out here!](https://animelodi.onrender.com/)
 
-[Demo](https://youtu.be/pDGi5Ey-FPY)
+[Demo](https://youtu.be/HK9X5tCpGoI)
 
 ** Please note that the backend might take 30-40s to start after inactivity due to Render's free tier policies**
 
